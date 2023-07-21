@@ -33,17 +33,26 @@ img {
   max-width: 100%;
   max-height: 200px;
 }
+span{
+  font-weight: 400 !important;
+}
 
   </style>
 </head>
 <body>
   <div class="container">
-    Pass Number :-<h2 id="pass_number"></h2>
+    <h2> Pass Number :- <span id="pass_number"></span></h2>
+    <h1> Name:- <span id="visitor_name"></span></h1>
+    <h2> Valid From :-  <span id="pass_date_from"></span></h2>
+    <h2> Valid Upto :-  <span id="pass_date_to"></span></h2>
+    <h2> Mobile Number :-  <span id="mobile_num"></span></h2>
+    <img id="pic_file_path" src="" alt="User Image">
+    <!-- Pass Number :-<h2 id="pass_number"></h2>
     Name:- <h1 id="visitor_name"></h1>
     Valid From :- <h2 id="pass_date_from"></h2>
     Valid Upto :- <h2 id="pass_date_to"></h2>
     Mobile Number :- <h2 id="mobile_num"></h2>
-    <img id="pic_file_path" src="" alt="User Image">
+    <img id="pic_file_path" src="" alt="User Image"> -->
   </div>
   <script>
     // Function to get the query parameters from the URL
@@ -60,6 +69,7 @@ function getQueryParams() {
 }
 
 function displayInfo() {
+  console.log("getQueryParams:::::::::::::",getQueryParams())
   const { pass_number, visitor_name, pass_date_from, pass_date_to, mobile_num, pic_file_path } = getQueryParams();
   const passNumberElement = document.getElementById('pass_number');
   const visitor_nameElement = document.getElementById('visitor_name');
@@ -77,15 +87,15 @@ function displayInfo() {
   }
 
   if (pass_date_from) {
-    passDateFromElement.src = pass_date_from;
+    passDateFromElement.textContent = pass_date_from;
   }
 
   if (pass_date_to) {
-    passDateToElement.src = pass_date_to;
+    passDateToElement.textContent = pass_date_to;
   }
 
   if (mobile_num) {
-    MobileNumberElement.src = mobile_num;
+    MobileNumberElement.textContent = mobile_num;
   }
 
   if (pic_file_path) {
