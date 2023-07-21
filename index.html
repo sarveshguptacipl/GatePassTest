@@ -1,0 +1,100 @@
+<!-- sample url - http://127.0.0.1:5500/index.html?visitor_name=John%20Doe&pic_file_path=https://sarveshgupta1997.github.io/images/sarvesh3.1.png -->
+<!-- pass_number, visitor_name, pass_date_from, pass_date_to, mobile_num, pic_file_path -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Display name and Image</title>
+  <style>
+    body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+h2 {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+img {
+  max-width: 100%;
+  max-height: 200px;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    Pass Number :-<h2 id="pass_number"></h2>
+    Name:- <h1 id="visitor_name"></h1>
+    Valid From :- <h2 id="pass_date_from"></h2>
+    Valid Upto :- <h2 id="pass_date_to"></h2>
+    Mobile Number :- <h2 id="mobile_num"></h2>
+    <img id="pic_file_path" src="" alt="User Image">
+  </div>
+  <script>
+    // Function to get the query parameters from the URL
+function getQueryParams() {
+  const queryParams = new URLSearchParams(window.location.search);
+  const pass_number = queryParams.get('pass_number');
+  const visitor_name = queryParams.get('visitor_name');
+  const pass_date_from = queryParams.get('pass_date_from');
+  const pass_date_to = queryParams.get('pass_date_to');
+  const mobile_num = queryParams.get('mobile_num');
+  const pic_file_path = queryParams.get('pic_file_path');
+
+  return { pass_number, visitor_name, pass_date_from, pass_date_to, mobile_num, pic_file_path };
+}
+
+function displayInfo() {
+  const { pass_number, visitor_name, pass_date_from, pass_date_to, mobile_num, pic_file_path } = getQueryParams();
+  const passNumberElement = document.getElementById('pass_number');
+  const visitor_nameElement = document.getElementById('visitor_name');
+  const passDateFromElement = document.getElementById('pass_date_from');
+  const passDateToElement = document.getElementById('pass_date_to');
+  const MobileNumberElement = document.getElementById('mobile_num');
+  const imageElement = document.getElementById('pic_file_path');
+
+  if (pass_number) {
+    passNumberElement.textContent = pass_number;
+  }
+
+  if (visitor_name) {
+    visitor_nameElement.textContent = visitor_name;
+  }
+
+  if (pass_date_from) {
+    passDateFromElement.src = pass_date_from;
+  }
+
+  if (pass_date_to) {
+    passDateToElement.src = pass_date_to;
+  }
+
+  if (mobile_num) {
+    MobileNumberElement.src = mobile_num;
+  }
+
+  if (pic_file_path) {
+    imageElement.src = pic_file_path;
+  }
+}
+
+window.onload = displayInfo;
+
+  </script>
+</body>
+</html>
